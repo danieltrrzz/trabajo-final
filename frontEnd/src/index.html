@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+
+        <div class="col">
+
+            <div class="jumbotron">
+                <h1 class="text-center">Reserva tu Hotel</h1>
+            </div>
+
+            <form id="formSearch">
+                <div class="form-group">
+                    <label for="inputSearch">Escribe un hotel</label>
+                    <input type="text" class="form-control" name="inputSearch" id="inputSearch">
+                    <label for="checkin-date">Fecha llegada</label>
+                    <input type="date" class="form-control" name="inputSearch" id="checkin-date">
+                    <label for="checkout-date">Fecha Salida</label>
+                    <input type="date" class="form-control" name="inputSearch" id="checkout-date">
+                </div>
+                <button class="btn btn-success text-dark"><strong>Buscar</strong></button>
+            </form>
+
+            <div class="card-columns mt-5" id="cardWrapper">
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
