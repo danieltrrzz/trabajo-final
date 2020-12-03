@@ -34,5 +34,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
+    new HtmlWebpackPlugin({
+      filename: 'login.html',
+      template: './src/login.html'
+    }),
   ],
 }
