@@ -39,4 +39,9 @@ module.exports = {
       template: './src/login.html'
     }),
   ],
+  devServer:{
+    proxy:{
+      '/api': 'http://127.0.0.1:3000' 
+    }
+  }
 }

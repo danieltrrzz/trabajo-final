@@ -1,21 +1,22 @@
 class SearchResults {
+  constructor() {
+    this.cardWrapper = document.querySelector("#cardWrapper");
+  }
 
-    constructor(){
-        this.cardWrapper = document.querySelector("#cardWrapper");
+  createCard(hotel) {
+    console.log(hotel);
+    let stars = `<div class="row">`;
+    
+    for (let i = 0; i < 5; i++) {
+      if (i < hotel.estrellas) {
+        stars += `<img src="./assets/images/star-enabled.png" class="card-img-top" alt="..."></img>`;
+      } else {
+        stars += `<img src="./assets/images/star-disabled.png" class="card-img-top" alt="..."></img>`;
+      }
     }
+    stars += `</div>`;
 
-    createCard(hotel){
-        const stars= `<div class="row">`;
-        for(i=0;i<5;i++){
-            if (i<hotel.estrellas) {
-                stars+= `<img src="./assets/images/star-enabled.png" class="card-img-top" alt="..."></img>`
-            } else {
-                stars+= `<img src="./assets/images/star-disabled.png" class="card-img-top" alt="..."></img>`
-            }
-        }
-        stars+=`</div>`
-        
-        const card = `
+    const card = `
             <div class="card">
                 <img src="${hotel.imagen}" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -25,11 +26,10 @@ class SearchResults {
                 </div>
             </div>  
         `;
-        return card;
-    }
+    return card;
+  }
 
-
-    /* createCard(track){
+  /* createCard(track){
         const card = `
             <div class="card">
                 <img src="${track.imgUrl}" class="card-img-top" alt="...">
@@ -44,10 +44,10 @@ class SearchResults {
         return card;
     } */
 
-    render(hoteles) {
-        const cards = hoteles.map(hotel => this.createCard(hotel));
-        this.cardWrapper.innerHTML = cards.join('');
-    };
+  render(hoteles) {
+    const cards = hoteles.map((hotel) => this.createCard(hotel));
+    this.cardWrapper.innerHTML = cards.join("");
+  }
 }
 
 export default SearchResults;

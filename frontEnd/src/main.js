@@ -23,16 +23,19 @@ window.addEventListener("load", () => {
 const search = new Search((value) => {
   spotifyService
     .searchTerm(value)
-    .then(({ tracks }) => {
-      console.log(tracks);
-      const parseTracks = tracks.items.map((track) => {
+    .then((response) => {
+      console.log(response);
+      
+      const parseHotel = response.map((hotel) => {
         return {
-          title: track.name,
-          imgUrl: track.album.images[0].url,
-          previewUrl: track.preview_url,
+          nombre: hotel.nombre,
+          estrellas: hotel.estrellas,
+          imagen: hotel.imagen,
+          ciudad: hotel.ciudad,
+          precio: hotel.precio
         };
       });
-      searchResults.render(parseTracks);
+      searchResults.render(parseHotel);
     })
     .catch((error) => {
       console.log(error);
