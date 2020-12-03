@@ -3,19 +3,29 @@ module.exports = (function(){
     const mongoose = require('mongoose');
     const genericSchema = function() {
         const Schema = mongoose.Schema;
-        const Ciudad = Schema({
+        const Usuario = Schema({
             nombre: {
                 type: String,
                 required: true,
                 trim: true,
             },
-            pais: {
+            correo: {
+                type: String,
+                required: true,
+                trim: true
+            },
+            contraseña: {
+                type: String,
+                required: true,
+                trim: true
+            },
+            telefono: {
                 type: String,
                 required: true,
                 trim: true
             }
         });      
-        return mongoose.model('ciudad', Ciudad);
+        return mongoose.model('usuario', Usuario);
     };
     return {
         genericSchema: genericSchema

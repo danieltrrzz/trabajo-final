@@ -4,9 +4,9 @@ const express = require('express');
 const router = express.Router();
 
 const genericController = require('../controller/dbController');
-const controller = genericController('ciudad');
+const controller = genericController('reservas');
 
-const endPoint = '/ciudad';
+const endPoint = '/reservas';
 
 router.get(endPoint + "/:id?", controller.get);
 router.post(endPoint, controller.post);

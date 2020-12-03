@@ -20,6 +20,8 @@ app.set('view engine','ejs');*/
 
 app.use(nameSpace, require('./routes/hotel'));
 app.use(nameSpace, require('./routes/ciudad'));
+app.use(nameSpace, require('./routes/reservas'));
+app.use(nameSpace, require('./routes/usuario'));
 
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,

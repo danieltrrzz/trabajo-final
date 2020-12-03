@@ -3,32 +3,29 @@ module.exports = (function(){
     const mongoose = require('mongoose');
     const genericSchema = function() {
         const Schema = mongoose.Schema;
-        const Hotel = Schema({
-            nombre: {
+        const Reserva = Schema({
+            fechaLLegada: {
                 type: String,
                 required: true,
                 trim: true,
                 minlength: 6,
             },
-            estrellas: {
-                type: Number,
+            fechaSalida: {
+                type: String,
                 required: true,
                 max: 5
             },
-            imagen:{
-                type: String,
+            diasEstadia:{
+                type: Number,
                 required: true,
             },
-            precio:{
-                type: Number,
-            },
-            ciudad: {
+            hotel: {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: 'ciudad',
+                ref: 'hotel',
                 required: true
             }
         });      
-        return mongoose.model('hotel', Hotel);
+        return mongoose.model('reserva', Reserva);
     };
     return {
         genericSchema: genericSchema

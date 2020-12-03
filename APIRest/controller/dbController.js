@@ -64,7 +64,6 @@ const genericController = function (nameSchema) {
     const remove = function (req, res) {
         if(req.params.id) {
             const paramsId = req.params.id;
-            validationHandler({ paramsId: IdSchema }, paramsId); 
             model.findByIdAndRemove(paramsId, (err, schemaStored) => {
                 if(err) return res.status(500).send({ message: "Error interno del servidor" });
                 if(!schemaStored) return res.status(404).send({ message: "No se encontraron datos" });
