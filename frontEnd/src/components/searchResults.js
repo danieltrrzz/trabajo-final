@@ -1,3 +1,6 @@
+import starEnabled from '../star-enabled.png';
+import starDisabled from '../star-disabled.png';
+
 class SearchResults {
   constructor() {
     this.cardWrapper = document.querySelector("#cardWrapper");
@@ -9,16 +12,22 @@ class SearchResults {
     
     for (let i = 0; i < 5; i++) {
       if (i < hotel.estrellas) {
-        stars += `<img src="./assets/images/star-enabled.png" class="card-img-top" alt="..."></img>`;
+        stars += `
+        <div class="col">
+            <img src="${starEnabled}" class="card-img-top" alt="..." width="2px" height="2px"></img>
+        </div>`;
       } else {
-        stars += `<img src="./assets/images/star-disabled.png" class="card-img-top" alt="..."></img>`;
+        stars += `
+        <div class="col">
+            <img src="${starDisabled}" class="card-img-top" alt="..." width="2px" height="2px"></img>
+        </div>`;
       }
     }
     stars += `</div>`;
 
     const card = `
             <div class="card">
-                <img src="${hotel.imagen}" class="card-img-top" alt="...">
+                <img src="${hotel.imagen}" class="card-img-top" alt="..." width="100px" height="150px">
                 <div class="card-body">
                     <h2 class="card-title">${hotel.nombre}</h2>
                     ${stars}
