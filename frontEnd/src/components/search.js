@@ -5,7 +5,7 @@ class Search {
         this.inputSearch = document.querySelector("#inputSearch");
         this.formSearch = document.querySelector("#formSearch");
 
-        this.formSearch.addEventListener('submit', (e) => {
+        window.addEventListener('load', (e) => {
             e.preventDefault();
             onSubmit(this.inputSearch.value);
         }); 
