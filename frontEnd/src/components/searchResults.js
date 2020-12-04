@@ -28,7 +28,7 @@ class SearchResults {
     stars += `</div>`;
 
     const card = `
-            <div class="card col-5 m-1 reservaHotel" id="${hotel.id}">
+            <div class="card col-5 m-1 reservaHotel" data-id="${hotel.id}">
                 <img src="${hotel.imagen}" class="card-img-top" alt="..." width="100px" height="150px">
                 <div class="card-body">
                     <h2 class="card-title">${hotel.nombre}</h2>

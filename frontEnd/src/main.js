@@ -7,26 +7,6 @@ import dateCalculator from "./components/datecalculator";
 const spotifyService = new SpotifyService();
 const searchResults = new SearchResults();
 
-window.addEventListener("load", () => {
-  /* const inputcheckInDate = document.querySelector("#checkin-date");
-  const inputcheckOutDate = document.querySelector("#checkout-date"); */
-
-  /* inputcheckInDate.value = dateCalculator(3);
-  inputcheckOutDate.value = dateCalculator(6);
-
-  inputcheckInDate.min = dateCalculator(1);
-  inputcheckOutDate.min = dateCalculator(2); */
-  search();
-  const cardWrapper = document.querySelector("#cardWrapper");
-  console.log(cardWrapper);
- cardWrapper.addEventListener("click","div.reservaHotel", () => {
-  alert("test");
-});
-});
-
-
-
-// Clase submit
 const search = () => {
   spotifyService
     .searchTerm()
@@ -49,3 +29,30 @@ const search = () => {
       console.log(error);
     });
 };
+
+
+/* window.addEventListener("load", () => {
+  /* const inputcheckInDate = document.querySelector("#checkin-date");
+  const inputcheckOutDate = document.querySelector("#checkout-date"); */
+
+  /* inputcheckInDate.value = dateCalculator(3);
+  inputcheckOutDate.value = dateCalculator(6);
+
+  inputcheckInDate.min = dateCalculator(1);
+  inputcheckOutDate.min = dateCalculator(2); */
+  search();
+  const cardWrapper = document.querySelector("#cardWrapper");
+  
+ cardWrapper.addEventListener("click", (e) => {
+  
+  const element= e.target.closest(".reservaHotel");
+  
+  if (element) {
+    console.log("Id ", element.dataset.id);  
+  }
+});
+// });
+
+
+
+// Clase submit
