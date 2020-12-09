@@ -37,40 +37,7 @@
                   <!-- <li class="nav-item">
                     <a class="nav-link" href="./login.html">Login</a>
                   </li> -->
-                  <li>
-                    <!-- <form id="formSearch" class="form-inline" action="javascript:void(0)">
-                      <div class="form-group">
-                        <input
-                          type="text"
-                          class="form-control m-1"
-                          name="inputSearch"
-                          id="inputSearch"
-                          placeholder="Escriba un hotel"
-                        />
-                        <label class="m-1" for="checkin-date"
-                          >Fecha llegada</label
-                        >
-                        <input
-                          type="date"
-                          class="form-control m-1"
-                          name="inputSearch"
-                          id="checkin-date"
-                        />
-                        <label class="m-1" for="checkout-date"
-                          >Fecha Salida</label
-                        >
-                        <input
-                          type="date"
-                          class="form-control m-1"
-                          name="inputSearch"
-                          id="checkout-date"
-                        />
-                      </div>
-                      <button class="btn btn-success text-dark">
-                        <strong>Buscar</strong>
-                      </button>
-                    </form> -->
-                  </li>
+                  <li></li>
                 </ul>
               </div>
             </nav>
@@ -93,7 +60,61 @@
           <div class="row" id="cardWrapper"></div>
         </div>
         <div class="col-6">
-          <div class="" id="formReservas"><h1>Haz clic en un hotel</h1></div>
+          <div class="" id="formReservas">
+            <h1>Haz clic en un hotel</h1>
+            <form id="formBooking">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control m-1"
+                  name="inputSearch"
+                  id="inputSearch"
+                  placeholder="Haz clic en un hotel para seleccionarlo"
+                  disabled
+                />
+                <label class="m-1" for="checkin-date">Fecha llegada</label>
+                <input
+                  type="date"
+                  class="form-control m-1"
+                  name="inputSearch"
+                  id="checkin-date"
+                />
+                <label class="m-1" for="checkout-date">Fecha Salida</label>
+                <input
+                  type="date"
+                  class="form-control m-1"
+                  name="inputSearch"
+                  id="checkout-date"
+                />
+                <label class="m-1" for="inputDays">Número de días a reservar</label>
+                <input
+                  type="text"
+                  class="form-control m-1"
+                  name="inputSearch"
+                  id="inputDays"
+                  placeholder=""
+                  disabled
+                />
+                
+                <label class="m-1" for="inputPrice">Valor reserva</label>
+                <input
+                  type="text"
+                  class="form-control m-1"
+                  name="inputSearch"
+                  id="inputPrice"
+                  placeholder=""
+                  disabled
+                />
+                <div class="alert alert-danger" role="alert" id="bookingWrongDates" hidden>
+                  Para poder continuar debes corregir las fechas.
+                </div>
+              </div>
+
+              <button class="btn btn-primary btn-lg" id="btnBooking">
+                <strong>Reservar ahora</strong>
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
