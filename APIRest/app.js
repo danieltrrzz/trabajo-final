@@ -2,6 +2,8 @@ require('dotenv').config();
 
 const mongoose = require('mongoose');
 const express = require('express');
+//Linea agregada para solucionar error de CORS policy para post de reservas, se instaló el paquete cors por npm
+const cors= require('cors');
 //const viewsRoutes = require('./routes/views');
 //const apiRoutes = require('./routes/api');
 
@@ -12,6 +14,9 @@ const nameSpace = '/api'
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+
+//Linea agregada para solucionar error de CORS policy para post de reservas, se instaló el paquete cors por npm
+app.use(cors());
 
 /*app.use(express.static('public'));
 app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));

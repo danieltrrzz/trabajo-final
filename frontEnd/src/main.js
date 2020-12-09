@@ -8,16 +8,6 @@ import getFormatNumber from "./components/getformatnumber.js";
 const spotifyService = new SpotifyService();
 const searchResults = new SearchResults();
 
-const fillPriceDays = () => {
-  var checkinDate = new Date(inputcheckInDate.value);
-  var checkoutDate = new Date(inputcheckOutDate.value);
-  var dias = Math.ceil(
-    (checkoutDate.getTime() - checkinDate.getTime()) / (1000 * 3600 * 24)
-  );
-  inputDays.value = dias;
-  inputPrice.value = getFormatNumber(dias * hotelSeleccionado.precio);
-};
-
 const search = () => {
   spotifyService
     .searchTerm()
@@ -56,11 +46,13 @@ window.addEventListener("load", () => {
   btnBooking.disabled = true;
 
   var hotelSeleccionado = {};
+  var dias = 0;
+  var costoReserva = 0;
 
   const verifyDates = () => {
     var checkinDate = new Date(inputcheckInDate.value);
     var checkoutDate = new Date(inputcheckOutDate.value);
-    var dias = Math.ceil(
+    dias = Math.ceil(
       (checkoutDate.getTime() - checkinDate.getTime()) / (1000 * 3600 * 24)
     );
     console.log(bookingWrongDates);
@@ -83,7 +75,8 @@ window.addEventListener("load", () => {
       bookingWrongDates.hidden = false;
     } else {
       inputDays.value = dias;
-      inputPrice.value = getFormatNumber(dias * hotelSeleccionado.precio);
+      costoReserva = getFormatNumber(dias * hotelSeleccionado.precio);
+      inputPrice.value = costoReserva;
     }
   };
 
@@ -96,7 +89,6 @@ window.addEventListener("load", () => {
 
   cardWrapper.addEventListener("click", (e) => {
     const element = e.target.closest(".reservaHotel");
-    const inputHotelForm = document.querySelector("#inputSearch");
 
     if (element) {
       console.log("Id ", element.dataset.id);
@@ -120,6 +112,64 @@ window.addEventListener("load", () => {
   });
   inputcheckOutDate.addEventListener("change", () => {
     verifyDates();
+  });
+
+  formBooking.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const nombreHotel = hotelSeleccionado._id;
+    const fechaCheckIn = inputcheckInDate.value;
+    const fechaCheckout = inputcheckOutDate.value;
+    const diasReserva = dias;
+    const valorReserva = costoReserva.replace(/\,/g, "");
+
+    console.log(fechaCheckIn);
+    console.log(fechaCheckout);
+    console.log(diasReserva);
+    console.log(valorReserva);
+    console.log(nombreHotel);
+
+    const formData = new FormData();
+    formData.append("fechaLLegada", fechaCheckIn);
+    formData.append("fechaSalida", fechaCheckout);
+    formData.append("diasEstadia", diasReserva);
+    formData.append("valorEstadia", valorReserva);
+    formData.append("hotel", nombreHotel);
+
+    console.log(formData);
+    console.log(
+      JSON.stringify({
+        fechaLLegada: fechaCheckIn,
+        fechaSalida: fechaCheckout,
+        diasEstadia: diasReserva,
+        valorEstadia: valorReserva,
+        hotel: nombreHotel,
+      })
+    );
+
+    const res = await fetch("/api/reservas", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        fechaLLegada: fechaCheckIn,
+        fechaSalida: fechaCheckout,
+        diasEstadia: diasReserva,
+        valorEstadia: valorReserva,
+        hotel: nombreHotel,
+      }),
+      /* body: formData */
+    });
+    if (!res.ok) {
+      alert("Error", res);
+    } else {
+      const data = await res.json();
+      console.log(data);
+      console.log(res);
+      formBooking.reset();
+    }
   });
 });
 

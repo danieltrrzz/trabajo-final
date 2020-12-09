@@ -19,6 +19,10 @@ module.exports = (function(){
                 type: Number,
                 required: true,
             },
+            valorEstadia:{
+                type: Number,
+                required: true,
+            },
             hotel: {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'hotel',

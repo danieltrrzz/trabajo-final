@@ -1,8 +1,8 @@
 class SpotifyService {
-  searchTerm(schema="hotel",tern="") {
-    console.log(tern);
+  searchTerm(schema="hotel",term="") {
+    /* console.log(term); */
 
-    return fetch(`/api/${schema}/${tern}`, {
+    return fetch(`/api/${schema}/${term}`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
