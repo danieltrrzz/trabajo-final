@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify</title>
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="jumbotron">
+        <h1 class="text-center">Reserva tu Hotel</h1>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="row">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <a class="navbar-brand" href="./index.html">Hoteles</a>
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="./index.html"
+                      >Home <span class="sr-only">(current)</span></a
+                    >
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="./buscarreserva.html">Buscar una reserva existente</a>
+                  </li>
+                  <li></li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+      <div class="row">
+        <div class="col-6">
+          <form id="form-bookingSearch">
+            <div class="form-group">
+              <label for="inputEmailBookingSearch">Correo Electronico</label>
+              <input
+                type="text"
+                class="form-control"
+                name="inputEmailBookingSearch"
+                id="email"
+                required
+              />
+
+              <label for="bookingIdSearch">Numero de reserva</label>
+              <input
+                type="text"
+                class="form-control"
+                name="inputSearch"
+                id="bookingIdSearch"
+                required
+              />
+
+              <label for="checkout-date">Contraseña</label>
+              <input
+                type="password"
+                class="form-control"
+                name="inputSearch"
+                id="password"
+                required
+              />
+              </div>
+              <button class="btn btn btn-primary" id="btnBuscarReserva">
+                <strong>Buscar</strong>
+              </button>
+              <button class="btn btn-warning" id="btnCancelarBusqueda">
+                <strong>Borrar</strong>
+              </button>
+            </form>
+        </div>
+        <div class="col-6">
+          <form id="form-bookingModify">
+            <div class="form-group">
+              <label for="bookingModifyHotel">Nombre del hotel</label>
+              <input
+                type="text"
+                class="form-control"
+                name="inputSearch"
+                id="bookingModifyHotel"
+                disabled
+              />
+
+              <label for="bookingModifyCheckin">Fecha de llegada</label>
+              <input
+                type="date"
+                class="form-control"
+                name="inputSearch"
+                id="bookingModifyCheckin"
+                required
+              />
+            </div>
+            <button class="btn text-dark">
+              <strong>Autenticarse</strong>
+            </button>
+            <button class="btn btn-success text-dark">
+              <strong>Registrarse</strong>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

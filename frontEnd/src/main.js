@@ -37,13 +37,17 @@ window.addEventListener("load", () => {
   const cardWrapper = document.querySelector("#cardWrapper");
   const formBooking = document.querySelector("#formBooking");
   const inputHotelForm = document.querySelector("#inputSearch");
+  const inputEmail=document.querySelector("#inputEmail");
   const inputPrice = document.querySelector("#inputPrice");
   const inputDays = document.querySelector("#inputDays");
   const btnBooking = document.querySelector("#btnBooking");
   const bookingWrongDates = document.querySelector("#bookingWrongDates");
-
+  const bookingSuccess = document.querySelector("#bookingSuccess");
+  const bookingId = document.querySelector("#bookingId");
   bookingWrongDates.hidden = true;
   btnBooking.disabled = true;
+
+  bookingSuccess.hidden = true;
 
   var hotelSeleccionado = {};
   var dias = 0;
@@ -114,6 +118,7 @@ window.addEventListener("load", () => {
     verifyDates();
   });
 
+
   formBooking.addEventListener("submit", async (event) => {
     event.preventDefault();
 
@@ -122,6 +127,8 @@ window.addEventListener("load", () => {
     const fechaCheckout = inputcheckOutDate.value;
     const diasReserva = dias;
     const valorReserva = costoReserva.replace(/\,/g, "");
+    const email = inputEmail.value;
+    /* const username = "5fd181fed51c003ad82eb369"; */
 
     console.log(fechaCheckIn);
     console.log(fechaCheckout);
@@ -129,23 +136,24 @@ window.addEventListener("load", () => {
     console.log(valorReserva);
     console.log(nombreHotel);
 
-    const formData = new FormData();
+    /* const formData = new FormData();
     formData.append("fechaLLegada", fechaCheckIn);
     formData.append("fechaSalida", fechaCheckout);
     formData.append("diasEstadia", diasReserva);
     formData.append("valorEstadia", valorReserva);
     formData.append("hotel", nombreHotel);
-
-    console.log(formData);
+ */
+    /* console.log(formData);
     console.log(
       JSON.stringify({
         fechaLLegada: fechaCheckIn,
         fechaSalida: fechaCheckout,
         diasEstadia: diasReserva,
         valorEstadia: valorReserva,
-        hotel: nombreHotel,
+        email: email,
+        hotel: nombreHotel
       })
-    );
+    ); */
 
     const res = await fetch("/api/reservas", {
       method: "POST",
@@ -158,17 +166,32 @@ window.addEventListener("load", () => {
         fechaSalida: fechaCheckout,
         diasEstadia: diasReserva,
         valorEstadia: valorReserva,
-        hotel: nombreHotel,
+        correo: email,
+        /* usuario:username, */
+        hotel: nombreHotel
       }),
       /* body: formData */
     });
     if (!res.ok) {
-      alert("Error", res);
+      console.log("Error", res.body);
     } else {
       const data = await res.json();
-      console.log(data);
+      console.log(data.Id);
       console.log(res);
-      formBooking.reset();
+
+      bookingSuccess.hidden = false;
+      bookingId.innerHTML = data.Id ;
+      
+      setInterval(() => {
+        bookingSuccess.hidden = true;
+        btnBooking.disabled = true;
+        formBooking.reset();
+        inputcheckInDate.value = dateCalculator(2);
+        inputcheckOutDate.value = dateCalculator(4);
+
+        inputcheckInDate.min = dateCalculator(1);
+        inputcheckOutDate.min = dateCalculator(2);
+      }, 10000);
     }
   });
 });

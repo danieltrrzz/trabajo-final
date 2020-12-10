@@ -34,9 +34,9 @@
                       >Home <span class="sr-only">(current)</span></a
                     >
                   </li>
-                  <!-- <li class="nav-item">
-                    <a class="nav-link" href="./login.html">Login</a>
-                  </li> -->
+                  <li class="nav-item active">
+                    <a class="nav-link" href="./buscarreserva.html">Buscar una reserva existente</a>
+                  </li>
                   <li></li>
                 </ul>
               </div>
@@ -60,6 +60,9 @@
           <div class="row" id="cardWrapper"></div>
         </div>
         <div class="col-6">
+          <div class="alert alert-success" role="alert" id="bookingSuccess">
+            Reserva realizada exitosamente, su número de reserva es <div id="bookingId"></div>
+          </div>
           <div class="" id="formReservas">
             <h1>Haz clic en un hotel</h1>
             <form id="formBooking">
@@ -71,6 +74,13 @@
                   id="inputSearch"
                   placeholder="Haz clic en un hotel para seleccionarlo"
                   disabled
+                />
+                <label class="m-1" for="inputEmail">Correo Electrónico</label>
+                <input
+                  type="email"
+                  class="form-control m-1"
+                  name="inputEmail"
+                  id="inputEmail"
                 />
                 <label class="m-1" for="checkin-date">Fecha llegada</label>
                 <input
@@ -106,7 +116,7 @@
                   disabled
                 />
                 <div class="alert alert-danger" role="alert" id="bookingWrongDates" hidden>
-                  Para poder continuar debes corregir las fechas.
+                  Para poder continuar debe corregir las fechas.
                 </div>
               </div>
 

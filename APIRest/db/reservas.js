@@ -23,6 +23,16 @@ module.exports = (function(){
                 type: Number,
                 required: true,
             },
+            correo: {
+                type: String,
+                required: true,
+                trim: true
+            },
+            /* usuario: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'usuario',
+                required: true
+            }, */
             hotel: {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'hotel',

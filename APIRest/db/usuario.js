@@ -14,7 +14,7 @@ module.exports = (function(){
                 required: true,
                 trim: true
             },
-            contraseña: {
+            password: {
                 type: String,
                 required: true,
                 trim: true

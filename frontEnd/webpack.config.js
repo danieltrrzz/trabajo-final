@@ -43,13 +43,13 @@ module.exports = {
       template: "./src/index.html",
     }),
     new HtmlWebpackPlugin({
-      filename: "login.html",
-      template: "./src/login.html",
+      filename: "buscarreserva.html",
+      template: "./src/buscarreserva.html",
     }),
   ],
   devServer: {
     proxy: {
-      "/api": "http://127.0.0.1:3000",
+      '/api': "http://127.0.0.1:3000",
     },
   },
 };
